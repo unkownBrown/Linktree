@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anveroo · Preview Sempurna</title>
+    <!-- Tailwind (grid & spacing) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Press Start 2P + Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === PIXEL NEON BIRU MENYALA THEME === */
+        * {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        body {
+            background: #0a0c0f;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            font-family: 'Inter', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+        .pixel-box {
+            background: #11161f;
+            border: 4px solid #00ffff;
+            box-shadow: 6px 6px 0 #00aaff, inset -2px -2px 0 #003366, inset 2px 2px 0 #88ffff;
+            color: #e0f2fe;
+        }
+        .pixel-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-shadow: 3px 3px 0 #0066aa, 0 0 10px #00ffff;
+            color: #aaffff;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .pixel-label {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            letter-spacing: 0.3px;
+            color: #88ddff;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+            display: block;
+            text-shadow: 0 0 5px #00aaff;
+        }
+        .pixel-input, .pixel-select {
+            background: #0f1a24;
+            border: 3px solid #00ffff;
+            color: #ffffff;
+            padding: 0.5rem 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: inset -3px -3px 0 #003355, inset 3px 3px 0 #88ffff;
+            outline: none;
+            width: 100%;
+            border-radius: 0;
+        }
+        .pixel-input::placeholder {
+            color: #446688;
+        }
+        .pixel-button {
+            background: #00ccff;
+            border: none;
+            border-bottom: 4px solid #0066aa;
+            border-right: 4px solid #0066aa;
+            color: #0a0c0f;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            transition: all 0.05s linear;
+            text-shadow: 1px 1px 0 #aaffff;
+            box-shadow: inset -1px -1px 0 #0088cc, inset 1px 1px 0 #aaffff, 0 0 10px #00ffff;
+        }
+        .pixel-button:active {
+            border-bottom-width: 2px;
+            border-right-width: 2px;
+            transform: translate(3px, 3px);
+            box-shadow: inset -1px -1px 0 #0066aa;
+        }
+        .pixel-card {
+            background: #0f1a24;
+            border: 4px solid #00ffff;
+            box-shadow: 8px 8px 0 #0066aa, inset -2px -2px 0 #003366, inset 2px 2px 0 #88ffff;
+            padding: 1.8rem 1.5rem;
+        }
+        .pixel-avatar {
+            border: 4px solid #00ffff;
+            box-shadow: 6px 6px 0 #0066aa, 0 0 20px #00ffff;
+            width: 96px;
+            height: 96px;
+            object-fit: cover;
+        }
+        .pixel-icon-btn {
+            background: #0f1a24;
+            border: 3px solid #00ffff;
+            color: #00ffff;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 3px 3px 0 #0066aa, 0 0 15px #00aaff;
+            transition: 0.05s linear;
+            font-size: 1.2rem;
+        }
+        .pixel-icon-btn:hover {
+            background: #00ffff;
+            color: #0a0c0f;
+            border-color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #0066aa, 0 0 30px #ffffff;
+        }
+        .pixel-link-btn {
+            background: #0f1a24;
+            border: 3px solid #00ffff;
+            color: #00ffff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.65rem;
+            padding: 0.9rem;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+            box-shadow: 5px 5px 0 #0066aa, 0 0 15px #00aaff;
+            transition: 0.05s linear;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+        .pixel-link-btn:hover {
+            background: #00ffff;
+            color: #0a0c0f;
+            border-color: #ffffff;
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0 #0066aa, 0 0 30px #ffffff;
+        }
+        .pixel-footer {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.5rem;
+            color: #88aaff;
+            text-shadow: 2px 2px 0 #003366, 0 0 8px #00aaff;
+        }
+        ::-webkit-scrollbar {
+            width: 14px;
+            background: #0f1a24;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00ffff;
+            border: 2px solid #0066aa;
+            box-shadow: inset 0 0 6px #00aaff;
+        }
+
+        /* MODAL NEON */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 20, 40, 0.95);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-content {
+            background: #0f1a24;
+            border: 6px solid #00ffff;
+            box-shadow: 12px 12px 0 #0066aa, inset -3px -3px 0 #003366, inset 3px 3px 0 #88ffff, 0 0 50px #00aaff;
+            padding: 2rem;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .modal-close {
+            background: none;
+            border: 3px solid #00ffff;
+            color: #00ffff;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #0066aa;
+        }
+        .modal-close:hover {
+            background: #00ffff;
+            color: #0a0c0f;
+        }
+        .code-area {
+            background: #03070c;
+            border: 4px solid #00ffff;
+            padding: 1.5rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #aaffff;
+            box-shadow: inset -3px -3px 0 #003366, inset 3px 3px 0 #88ffff;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+        .copy-btn {
+            background: #00ccff;
+            border-bottom: 4px solid #0066aa;
+            border-right: 4px solid #0066aa;
+            color: #0a0c0f;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1rem;
+            align-self: flex-end;
+            box-shadow: inset -1px -1px 0 #0088cc, inset 1px 1px 0 #aaffff, 0 0 15px #00ffff;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast-notification {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #11161f;
+            border: 3px solid #00ffff;
+            box-shadow: 6px 6px 0 #0066aa, 0 0 30px #00ffff;
+            padding: 12px 24px;
+            color: #aaffff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .toast-notification.show {
+            transform: translateX(0);
+        }
+        .toast-notification i {
+            margin-right: 8px;
+            color: #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast-notification">
+        <i class="fa-regular fa-circle-check"></i> <span id="toastMessage">Perubahan tersimpan</span>
+    </div>
+
+    <!-- MODAL POPUP -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="pixel-title text-sm md:text-base flex items-center gap-2">
+                    <i class="fa-solid fa-code"></i> KODE PREVIEW (SAMA PERSIS)
+                </h2>
+                <button id="closeModalBtn" class="modal-close flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="codeDisplay" class="code-area">
+                <!-- kode preview akan diisi -->
+            </div>
+            <button id="copyCodeBtn" class="copy-btn flex items-center gap-2 self-center mt-4">
+                <i class="fa-regular fa-clipboard"></i> SALIN KODE PREVIEW
+            </button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <div class="max-w-7xl mx-auto mb-6 flex flex-wrap items-center justify-between gap-4 pixel-box p-4">
+        <div class="flex items-center gap-3">
+            <div class="pixel-icon-btn w-14 h-14 text-2xl">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <div>
+                <h1 class="pixel-title text-xl md:text-2xl flex items-center gap-2">
+                    <span class="text-[#aaffff]">ANVEROO</span>
+                    <span class="text-[0.5rem] bg-[#00ffff] text-[#0a0c0f] px-2 py-1 pixel-box" style="border-width:2px; border-color:#0066aa;">NEON</span>
+                </h1>
+                <p class="text-[#88ddff] font-mono text-[0.6rem] tracking-widest"><i class="fa-regular fa-gamepad mr-1"></i>PREVIEW 100% IDENTIK</p>
+            </div>
+        </div>
+        <button id="showCodeBtn" class="pixel-button flex items-center gap-2" style="background:#00ffff; color:#0a0c0f;">
+            <i class="fa-solid fa-eye"></i> LIHAT KODE PREVIEW
+        </button>
+    </div>
+
+    <!-- GRID BUILDER + PREVIEW -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        
+        <!-- FORM BUILDER -->
+        <div class="pixel-box p-5">
+            <h2 class="pixel-title text-lg mb-5 flex items-center gap-2"><i class="fa-solid fa-sliders"></i> KONFIGURASI</h2>
+
+            <div class="mb-4">
+                <label class="pixel-label"><i class="fa-regular fa-image mr-1"></i> AVATAR URL</label>
+                <input type="url" id="imgInput" value="https://ui-avatars.com/api/?name=Anv&background=00ffff&color=0a0c0f&size=128&bold=true" class="pixel-input">
+            </div>
+            <div class="mb-4">
+                <label class="pixel-label"><i class="fa-regular fa-user mr-1"></i> NAMA</label>
+                <input type="text" id="namaInput" value="Anveroo" class="pixel-input">
+            </div>
+            <div class="mb-4">
+                <label class="pixel-label"><i class="fa-regular fa-message mr-1"></i> BIO</label>
+                <input type="text" id="deskripsiInput" value="Pixel Artist · Retro Gamer" class="pixel-input">
+            </div>
+            <div class="mb-5">
+                <label class="pixel-label"><i class="fa-regular fa-copyright mr-1"></i> FOOTER</label>
+                <input type="text" id="footerInput" value="© 2026 ANVEROO" class="pixel-input">
+            </div>
+
+            <!-- MEDIA SOSIAL BUILDER -->
+            <div class="mb-5">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="pixel-label">MEDSOS</span>
+                    <button id="addMedSosBtn" class="pixel-button text-xs py-1.5 px-2"><i class="fa-solid fa-plus mr-1"></i>TAMBAH</button>
+                </div>
+                <div id="medsosList" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+                <p class="pixel-footer mt-2">pilih platform · url opsional</p>
+            </div>
+
+            <!-- LINK BUILDER -->
+            <div class="mb-5">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="pixel-label">LINKS</span>
+                    <button id="addLinkBtn" class="pixel-button text-xs py-1.5 px-2"><i class="fa-solid fa-plus mr-1"></i>TAMBAH</button>
+                </div>
+                <div id="linksList" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+            </div>
+
+            <!-- TOMBOL RESET -->
+            <div class="flex gap-3 mt-4">
+                <button id="resetDefaultBtn" class="pixel-button flex-1 text-xs"><i class="fa-solid fa-rotate-left mr-1"></i>RESET</button>
+                <button id="previewNowBtn" class="pixel-button flex-1 text-xs"><i class="fa-regular fa-eye mr-1"></i>REFRESH</button>
+            </div>
+        </div>
+
+        <!-- PREVIEW KANAN (LIVE UPDATE) -->
+        <div class="lg:sticky lg:top-8 h-fit">
+            <h2 class="pixel-title text-lg mb-3 ml-1">LIVE PREVIEW</h2>
+            <div id="previewContainer" class="pixel-card">
+                <!-- isi javascript -->
+            </div>
+            <p class="pixel-footer mt-3 text-center">setiap perubahan auto update + notif</p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // DAFTAR PLATFORM + IKON
+            const PLATFORM_ICONS = {
+                'github': 'fa-brands fa-github',
+                'facebook': 'fa-brands fa-facebook',
+                'instagram': 'fa-brands fa-instagram',
+                'twitter': 'fa-brands fa-twitter',
+                'x': 'fa-brands fa-x-twitter',
+                'youtube': 'fa-brands fa-youtube',
+                'linkedin': 'fa-brands fa-linkedin',
+                'tiktok': 'fa-brands fa-tiktok',
+                'discord': 'fa-brands fa-discord',
+                'twitch': 'fa-brands fa-twitch',
+                'spotify': 'fa-brands fa-spotify',
+                'whatsapp': 'fa-brands fa-whatsapp',
+                'telegram': 'fa-brands fa-telegram',
+                'dribbble': 'fa-brands fa-dribbble',
+                'behance': 'fa-brands fa-behance',
+                'medium': 'fa-brands fa-medium',
+                'pinterest': 'fa-brands fa-pinterest',
+                'reddit': 'fa-brands fa-reddit',
+                'snapchat': 'fa-brands fa-snapchat',
+                'steam': 'fa-brands fa-steam',
+                'paypal': 'fa-brands fa-paypal',
+                'patreon': 'fa-brands fa-patreon',
+                'codepen': 'fa-brands fa-codepen',
+                'stackoverflow': 'fa-brands fa-stack-overflow',
+                'email': 'fa-solid fa-envelope',
+                'website': 'fa-solid fa-globe'
+            };
+
+            const defaultData = {
+                img: "https://ui-avatars.com/api/?name=Anv&background=00ffff&color=0a0c0f&size=128&bold=true",
+                nama: "Anveroo",
+                deskripsi: "Pixel Artist · Retro Gamer",
+                footer: "© 2026 ANVEROO",
+                medsos: [
+                    { platform: "github", url: "https://github.com/anveroo" },
+                    { platform: "instagram", url: "https://instagram.com/anveroo" },
+                    { platform: "discord", url: "https://discord.gg/anveroo" }
+                ],
+                links: [
+                    { text: "🎮 PORTOFOLIO PIXEL", url: "#" },
+                    { text: "🕹️ GAME JAM 2026", url: "#" }
+                ]
+            };
+
+            let currentState = JSON.parse(JSON.stringify(defaultData));
+            let toastTimeout;
+
+            // Elemen DOM
+            const imgInput = document.getElementById('imgInput');
+            const namaInput = document.getElementById('namaInput');
+            const deskripsiInput = document.getElementById('deskripsiInput');
+            const footerInput = document.getElementById('footerInput');
+            const medsosListDiv = document.getElementById('medsosList');
+            const linksListDiv = document.getElementById('linksList');
+            const previewContainer = document.getElementById('previewContainer');
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+
+            // Fungsi notifikasi smooth
+            function showToast(message = 'Perubahan tersimpan', duration = 2000) {
+                toastMessage.textContent = message;
+                toast.classList.add('show');
+                
+                if (toastTimeout) clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, duration);
+            }
+
+            // Render preview
+            function renderPreview() {
+                const img = currentState.img || defaultData.img;
+                const nama = currentState.nama || '';
+                const deskripsi = currentState.deskripsi || '';
+                const footer = currentState.footer || '';
+                const medsos = currentState.medsos || [];
+                const links = currentState.links || [];
+
+                let html = `
+                    <div class="flex flex-col items-center text-center">
+                        <img src="${img}" alt="avatar" class="pixel-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Err&background=00ffff&color=0a0c0f'">
+                        <h2 class="pixel-title text-xl mt-4 text-[#aaffff]">${nama}</h2>
+                        <p class="text-[#88ddff] font-mono text-xs mt-1 pixel-box py-2 px-3" style="border-width:2px;">${deskripsi}</p>
+                        
+                        <div class="flex flex-wrap justify-center gap-2 mt-5">
+                `;
+                medsos.forEach(item => {
+                    let platform = item.platform.toLowerCase();
+                    let iconClass = PLATFORM_ICONS[platform] || 'fa-solid fa-link';
+                    let url = item.url && item.url.trim() !== '' ? item.url : '#';
+                    html += `<a href="${url}" target="_blank" class="pixel-icon-btn"><i class="${iconClass}"></i></a>`;
+                });
+                html += `</div><div class="w-full space-y-3 mt-6">`;
+                links.forEach(link => {
+                    let text = link.text || 'LINK';
+                    let url = link.url && link.url.trim() !== '' ? link.url : '#';
+                    html += `<a href="${url}" target="_blank" class="pixel-link-btn">${text}</a>`;
+                });
+                html += `</div><div class="mt-6 pixel-footer">${footer}</div></div>`;
+                
+                previewContainer.innerHTML = html;
+                showToast('Preview diperbarui');
+            }
+
+            // Render form builder
+            function renderBuilderForms() {
+                let medsosHtml = '';
+                currentState.medsos.forEach((item, index) => {
+                    medsosHtml += `<div class="flex items-center gap-2 pixel-box p-1.5" style="border-width:2px;" data-index="${index}"><select class="medsos-platform pixel-select text-xs p-1" data-index="${index}">${Object.keys(PLATFORM_ICONS).map(p => `<option value="${p}" ${p === item.platform ? 'selected' : ''}>${p}</option>`).join('')}</select><input type="url" class="medsos-url pixel-input flex-1 text-xs" placeholder="URL" value="${item.url || ''}" data-index="${index}"><button class="remove-medsos pixel-icon-btn !w-8 !h-8 text-sm" data-index="${index}"><i class="fa-solid fa-trash"></i></button></div>`;
+                });
+                medsosListDiv.innerHTML = medsosHtml;
+
+                let linksHtml = '';
+                currentState.links.forEach((item, index) => {
+                    linksHtml += `<div class="flex items-center gap-2 pixel-box p-1.5" style="border-width:2px;" data-index="${index}"><input type="text" class="link-text pixel-input w-24 text-xs" placeholder="teks" value="${item.text || ''}" data-index="${index}"><input type="url" class="link-url pixel-input flex-1 text-xs" placeholder="URL" value="${item.url || ''}" data-index="${index}"><button class="remove-link pixel-icon-btn !w-8 !h-8 text-sm" data-index="${index}"><i class="fa-solid fa-trash"></i></button></div>`;
+                });
+                linksListDiv.innerHTML = linksHtml;
+            }
+
+            function syncStateFromForms() {
+                currentState.img = imgInput.value;
+                currentState.nama = namaInput.value;
+                currentState.deskripsi = deskripsiInput.value;
+                currentState.footer = footerInput.value;
+
+                const newMedsos = [];
+                document.querySelectorAll('#medsosList > div').forEach(div => {
+                    const select = div.querySelector('.medsos-platform');
+                    const urlInput = div.querySelector('.medsos-url');
+                    if(select && urlInput) newMedsos.push({platform: select.value, url: urlInput.value});
+                });
+                currentState.medsos = newMedsos;
+
+                const newLinks = [];
+                document.querySelectorAll('#linksList > div').forEach(div => {
+                    const textInput = div.querySelector('.link-text');
+                    const urlInput = div.querySelector('.link-url');
+                    if(textInput && urlInput) newLinks.push({text: textInput.value, url: urlInput.value});
+                });
+                currentState.links = newLinks;
+            }
+
+            // Event listeners
+            document.getElementById('addMedSosBtn').addEventListener('click', ()=>{
+                syncStateFromForms(); 
+                currentState.medsos.push({platform:'github',url:''}); 
+                renderBuilderForms(); 
+                syncStateFromForms(); 
+                renderPreview();
+                showToast('Medsos ditambahkan');
+            });
+            
+            document.getElementById('addLinkBtn').addEventListener('click', ()=>{
+                syncStateFromForms(); 
+                currentState.links.push({text:'LINK BARU',url:''}); 
+                renderBuilderForms(); 
+                syncStateFromForms(); 
+                renderPreview();
+                showToast('Link ditambahkan');
+            });
+            
+            medsosListDiv.addEventListener('click', (e)=>{
+                const target = e.target.closest('.remove-medsos');
+                if(target){ 
+                    let idx = target.getAttribute('data-index'); 
+                    syncStateFromForms(); 
+                    currentState.medsos.splice(idx,1); 
+                    renderBuilderForms(); 
+                    syncStateFromForms(); 
+                    renderPreview();
+                    showToast('Medsos dihapus');
+                }
+            });
+            
+            linksListDiv.addEventListener('click', (e)=>{
+                const target = e.target.closest('.remove-link');
+                if(target){ 
+                    let idx = target.getAttribute('data-index'); 
+                    syncStateFromForms(); 
+                    currentState.links.splice(idx,1); 
+                    renderBuilderForms(); 
+                    syncStateFromForms(); 
+                    renderPreview();
+                    showToast('Link dihapus');
+                }
+            });
+
+            // Auto update on input change
+            [imgInput, namaInput, deskripsiInput, footerInput].forEach(i => 
+                i.addEventListener('input', ()=>{ 
+                    syncStateFromForms(); 
+                    renderPreview(); 
+                })
+            );
+
+            medsosListDiv.addEventListener('change', ()=>{ 
+                syncStateFromForms(); 
+                renderPreview(); 
+            });
+            
+            medsosListDiv.addEventListener('input', ()=>{ 
+                syncStateFromForms(); 
+                renderPreview(); 
+            });
+            
+            linksListDiv.addEventListener('change', ()=>{ 
+                syncStateFromForms(); 
+                renderPreview(); 
+            });
+            
+            linksListDiv.addEventListener('input', ()=>{ 
+                syncStateFromForms(); 
+                renderPreview(); 
+            });
+
+            document.getElementById('resetDefaultBtn').addEventListener('click', ()=>{
+                currentState = JSON.parse(JSON.stringify(defaultData));
+                imgInput.value = currentState.img; 
+                namaInput.value = currentState.nama; 
+                deskripsiInput.value = currentState.deskripsi; 
+                footerInput.value = currentState.footer;
+                renderBuilderForms(); 
+                syncStateFromForms(); 
+                renderPreview();
+                showToast('Reset ke default');
+            });
+
+            document.getElementById('previewNowBtn').addEventListener('click', ()=>{ 
+                syncStateFromForms(); 
+                renderPreview(); 
+            });
+
+            // MODAL & GENERATE KODE PREVIEW (SAMA PERSIS DENGAN LIVE PREVIEW)
+            const modal = document.getElementById('modalOverlay');
+            const codeDisplay = document.getElementById('codeDisplay');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const showCodeBtn = document.getElementById('showCodeBtn');
+            const copyCodeBtn = document.getElementById('copyCodeBtn');
+
+            function generateIdenticalPreviewCode() {
+                // Ambil semua style dari halaman (termasuk semua CSS)
+                const styles = document.querySelector('style').innerHTML;
+                
+                // Ambil HTML preview (tanpa wrapper tambahan, persis seperti yang terlihat)
+                const previewHTML = previewContainer.innerHTML;
+                
+                // Struktur lengkap dengan font, FA, dan style yang sama persis
+                return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anveroo Preview - Sama Persis</title>
+    <!-- Font Awesome 6 (wajib untuk ikon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset minimal */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #0a0c0f; 
+            background-image: linear-gradient(rgba(0,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        /* Semua class pixel diambil persis */
+        ${styles}
+        /* Pembungkus biar sama persis dengan preview */
+        .preview-exact {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-exact pixel-card">
+        ${previewHTML}
+    </div>
+</body>
+</html>`;
+            }
+
+            showCodeBtn.addEventListener('click', () => {
+                syncStateFromForms();
+                renderPreview(); // pastikan preview terbaru
+                codeDisplay.textContent = generateIdenticalPreviewCode();
+                modal.classList.add('show');
+                showToast('Kode preview siap (sama persis)');
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+            });
+
+            copyCodeBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeDisplay.textContent).then(() => {
+                    showToast('Kode preview disalin! ✓');
+                }).catch(() => showToast('Gagal menyalin', 2000));
+            });
+
+            // INIT
+            renderBuilderForms();
+            syncStateFromForms();
+            renderPreview();
+        })();
+    </script>
+
+    <!-- FOOTER -->
+    <div class="max-w-7xl mx-auto mt-8 text-center pixel-footer border-t border-[#00ffff] pt-4">
+        <i class="fa-regular fa-crystal"></i> ANVEROO NEON PIXEL · PREVIEW 100% IDENTIK
+    </div>
+</body>
+</html>
